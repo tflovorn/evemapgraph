@@ -19,6 +19,10 @@ import data
 (psql evedb < inc100-pgsql-v2-unquoted-compatible.sql)
 
 put postgres jdbc driver in evemapgraph root directory
-(postgresql-9.0-801.jdbc4.jar)
+(postgresql-9.0-801.jdbc4.jar from http://jdbc.postgresql.org/download.html)
+
+put blueprints in evemapgraph root directory
+(blueprints-0.3.jar from https://github.com/tinkerpop/blueprints/downloads,
+    extract from blueprints-0.3.zip/bluepints-0.3/src)
 
 -------------------
