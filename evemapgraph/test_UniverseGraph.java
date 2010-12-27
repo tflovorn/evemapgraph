@@ -6,7 +6,7 @@ import java.sql.*;
 
 import evemapgraph.*;
 
-public class test_EveDB {
+public class test_UniverseGraph {
     public static void main(String[] args) {
         HashMap<Integer, SolarSystem> systems;
         ArrayList<SolarSystemJump> jumps;
@@ -18,8 +18,6 @@ public class test_EveDB {
             System.out.println(e.toString());
             return;
         }
-        System.out.println(systems.get(30000001).solarsystemname);
-        System.out.println(jumps.get(0).fromsolarsystemid + " ---> " +
-                           jumps.get(0).tosolarsystemid);
+        UniverseGraph map = new UniverseGraph(systems.values(), jumps);
     }
 }

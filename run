@@ -1,8 +1,11 @@
 #!/bin/bash
 
-export CLASSPATH=postgresql-9.0-801.jdbc4.jar:.
+export CLASSPATH=postgresql-9.0-801.jdbc4.jar:blueprints-0.3.jar:.
 javac evemapgraph/SolarSystem.java
 javac evemapgraph/SolarSystemJump.java
 javac evemapgraph/EveDB.java
-javac evemapgraph/test_EveDB.java
-java -Djdbc.drivers=org.postgresql.Driver evemapgraph.test_EveDB
+javac evemapgraph/UniverseGraph.java
+#javac evemapgraph/test_EveDB.java
+javac evemapgraph/test_UniverseGraph.java
+#java -Djdbc.drivers=org.postgresql.Driver evemapgraph.test_EveDB
+java -Djdbc.drivers=org.postgresql.Driver evemapgraph.test_UniverseGraph
