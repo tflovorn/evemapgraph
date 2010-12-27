@@ -1,5 +1,0 @@
-#!/bin/bash
-
-export CLASSPATH=postgresql-9.0-801.jdbc4.jar:.
-javac evemapgraph/SolarSystem.java
-javac evemapgraph/EveDB.java
