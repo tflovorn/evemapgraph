@@ -4,8 +4,7 @@ class test_DBConnect {
     public static void main(String[] args) {
         try {
             doQuery();
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("SQL exception occured!");
             System.out.println(e.toString());
         }

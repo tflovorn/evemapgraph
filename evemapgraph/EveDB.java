@@ -22,7 +22,7 @@
 
 package evemapgraph;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.sql.*;
 
 import evemapgraph.SolarSystem;
@@ -34,43 +34,44 @@ public class EveDB {
         this.conn = getConnection();
     }
 
-    public ArrayList<SolarSystem> getSolarSystems() throws SQLException {
-        ArrayList<SolarSystem> systemList = new ArrayList<SolarSystem>();
+    public HashMap<Integer, SolarSystem> getSolarSystems() throws SQLException {
+        HashMap<Integer, SolarSystem> systems =
+            new HashMap<Integer, SolarSystem>();
         Statement st = this.conn.createStatement();
         String query = "SELECT * FROM mapsolarsystems";
         ResultSet rs = st.executeQuery(query);
         while (rs.next()) {
-            SolarSystem thisSystem = new SolarSystem();
-            thisSystem.solarsystemname = rs.getString("solarsystemname");
-            thisSystem.securityclass = rs.getString("securityclass");
-            thisSystem.regionid = rs.getInt("regionid");
-            thisSystem.constellationid = rs.getInt("constellationid");
-            thisSystem.solarsystemid = rs.getInt("solarsystemid");
-            thisSystem.border = rs.getInt("border");
-            thisSystem.fringe = rs.getInt("fringe");
-            thisSystem.corridor = rs.getInt("corridor");
-            thisSystem.hub = rs.getInt("hub");
-            thisSystem.international = rs.getInt("international");
-            thisSystem.regional = rs.getInt("regional");
-            thisSystem.constellation = rs.getInt("constellation");
-            thisSystem.factionid = rs.getInt("factionid");
-            thisSystem.suntypeid = rs.getInt("suntypeid");
-            thisSystem.x = rs.getDouble("x");
-            thisSystem.y = rs.getDouble("y");
-            thisSystem.z = rs.getDouble("z");
-            thisSystem.xMin = rs.getDouble("xMin");
-            thisSystem.xMax = rs.getDouble("xMax");
-            thisSystem.ymin = rs.getDouble("ymin");
-            thisSystem.ymax = rs.getDouble("ymax");
-            thisSystem.zmin = rs.getDouble("zmin");
-            thisSystem.zmax = rs.getDouble("zmax");
-            thisSystem.security = rs.getDouble("security");
-            thisSystem.radius = rs.getDouble("radius");
-            systemList.add(thisSystem);
+            SolarSystem ss = new SolarSystem();
+            ss.solarsystemname = rs.getString("solarsystemname");
+            ss.securityclass = rs.getString("securityclass");
+            ss.regionid = rs.getInt("regionid");
+            ss.constellationid = rs.getInt("constellationid");
+            ss.solarsystemid = rs.getInt("solarsystemid");
+            ss.border = rs.getInt("border");
+            ss.fringe = rs.getInt("fringe");
+            ss.corridor = rs.getInt("corridor");
+            ss.hub = rs.getInt("hub");
+            ss.international = rs.getInt("international");
+            ss.regional = rs.getInt("regional");
+            ss.constellation = rs.getInt("constellation");
+            ss.factionid = rs.getInt("factionid");
+            ss.suntypeid = rs.getInt("suntypeid");
+            ss.x = rs.getDouble("x");
+            ss.y = rs.getDouble("y");
+            ss.z = rs.getDouble("z");
+            ss.xMin = rs.getDouble("xMin");
+            ss.xMax = rs.getDouble("xMax");
+            ss.ymin = rs.getDouble("ymin");
+            ss.ymax = rs.getDouble("ymax");
+            ss.zmin = rs.getDouble("zmin");
+            ss.zmax = rs.getDouble("zmax");
+            ss.security = rs.getDouble("security");
+            ss.radius = rs.getDouble("radius");
+            systems.put(ss.solarsystemid, ss);
         }
         rs.close();
         st.close();
-        return systemList;
+        return systems;
     }
 
     private Connection getConnection() throws SQLException {

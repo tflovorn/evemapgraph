@@ -1,6 +1,6 @@
 package evemapgraph;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.sql.*;
 
 import evemapgraph.*;
@@ -9,8 +9,8 @@ public class test_EveDB {
     public static void main(String[] args) {
         try {
             EveDB db = new EveDB();
-            ArrayList<SolarSystem> systemList = db.getSolarSystems();
-            System.out.println(systemList.get(0).solarsystemname);
+            HashMap<Integer, SolarSystem> systems = db.getSolarSystems();
+            System.out.println(systems.get(30000001).solarsystemname);
         } catch (SQLException e) {
             System.out.println(e.toString());
         }
