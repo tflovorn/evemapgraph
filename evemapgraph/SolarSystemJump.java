@@ -22,12 +22,7 @@
 
 package evemapgraph;
 
-public class SolarSystem {
-    public String solarsystemname, securityclass;
-    public int regionid, constellationid, solarsystemid, border, fringe,
-        corridor, hub, international, regional, constellation, factionid,
-        suntypeid;
-    // min/max lowercase for y/z because it's that way in the db
-    public double x, y, z, xMin, xMax, ymin, ymax, zmin, zmax, security, 
-        radius;
+public class SolarSystemJump {
+    public int fromregionid, fromconstellationid, fromsolarsystemid,
+               tosolarsystemid, toconstellationid, toregionid;
 }

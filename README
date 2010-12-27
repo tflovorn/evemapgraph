@@ -18,4 +18,7 @@ make db, set user
 import data
 (psql evedb < inc100-pgsql-v2-unquoted-compatible.sql)
 
+put postgres jdbc driver in evemapgraph root directory
+(postgresql-9.0-801.jdbc4.jar)
+
 -------------------

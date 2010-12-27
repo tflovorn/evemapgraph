@@ -23,15 +23,38 @@
 package evemapgraph;
 
 import java.util.HashMap;
+import java.util.ArrayList;
 import java.sql.*;
 
 import evemapgraph.SolarSystem;
+import evemapgraph.SolarSystemJump;
 
 public class EveDB {
     private Connection conn;
 
     public EveDB() throws SQLException {
         this.conn = getConnection();
+    }
+
+    public ArrayList<SolarSystemJump> getSolarSystemJumps()
+      throws SQLException {
+        ArrayList<SolarSystemJump> jumps = new ArrayList<SolarSystemJump>();
+        Statement st = this.conn.createStatement();
+        String query = "SELECT * FROM mapsolarsystemjumps";
+        ResultSet rs = st.executeQuery(query);
+        while (rs.next()) {
+            SolarSystemJump jump = new SolarSystemJump();
+            jump.fromregionid = rs.getInt("fromregionid");
+            jump.fromconstellationid = rs.getInt("fromconstellationid");
+            jump.fromsolarsystemid = rs.getInt("fromsolarsystemid");
+            jump.tosolarsystemid = rs.getInt("tosolarsystemid");
+            jump.toconstellationid = rs.getInt("toconstellationid");
+            jump.toregionid = rs.getInt("toregionid");
+            jumps.add(jump);
+        }
+        rs.close();
+        st.close();
+        return jumps;
     }
 
     public HashMap<Integer, SolarSystem> getSolarSystems() throws SQLException {
